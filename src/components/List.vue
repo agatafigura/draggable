@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-3">
       <h3>To do</h3>
-      <draggable class="list-group list1" :list="list1" group="people" @change="log">
+      <draggable class="list-group list1" :list="list1" key="":group="{ name: 'people', pull: 'clone', put: false }" @change="log">
         <div
           class="list-group-item"
           v-for="element in list1"
@@ -34,9 +34,9 @@
 <script>
 import draggable from "vuedraggable";
 export default {
-  name: "two-lists",
-  display: "Two Lists",
-  order: 1,
+  name: "clone",
+  display: "Clone",
+  order: 2,
   components: {
     draggable
   },
@@ -56,18 +56,7 @@ export default {
       ]
     };
   },
-  methods: {
-    add: function() {
-      this.list.push({ name: "Juan" });
-    },
-    replace: function() {
-      this.list = [{ name: "Edgard" }];
-    },
-    clone: function(el) {
-      return {
-        name: el.name + " cloned"
-      };
-    },
+   methods: {
     log: function(evt) {
       window.console.log(evt);
     }
